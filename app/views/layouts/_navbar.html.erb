@@ -12,13 +12,13 @@
       <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Job Board", "#", class: "nav-link" %>
+            <%= link_to "Job Board", jobs_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Bookings", "#", class: "dropdown-item" %>
+            <%= link_to "Bookings", bookings_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
