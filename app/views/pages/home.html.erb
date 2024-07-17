@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_url('banner.jpg')%>);">
+  <div class="container">
+    <h1>Welcome to <strong>USpeak4Me</strong>!</h1>
+    <p>You connect, we speak.</p>
+    <%= link_to "Post a job request", "#", class: "btn btn-ghost" %>
+    <%= link_to "Book an interpreter", "#", class: "btn btn-ghost" %>
+  </div>
+</div>
+
+<div class="container p-3">
+    <%# <h2>Meet our interpreters</h2> %>
+    <h2>Recent job requests</h2>
+    <h2>Reviews from our users</h2>
+</div>
