@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:index, :update]
-  namespace :translator do
+  namespace :interpreter do
     resources :bookings, only: :index
     # equivalent to => get 'translator/bookings', to: 'translator/bookings#index'
   end
