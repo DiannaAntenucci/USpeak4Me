@@ -11,5 +11,7 @@ user = User.create(email:"rena.wxy@gmail.com", password:"123456")
 
 20.times do |i|
   user = User.create(email:"user-#{i+1}@example.com", password:"123456")
-  Job.create!( job_category: "Cleaning", user: user, date: Time.now, price: 100, urgency: 1, address: "123 Main St", description: "Clean the house")
+  Job.create!(job_category: "City Hall", user: user, date: Time.now, price: 100, urgency: 1, address: "123 Main St", description: "Clean the house")
 end
+
+Job.destroy_all
