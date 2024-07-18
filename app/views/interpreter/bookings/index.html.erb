@@ -1,1 +1,7 @@
-#index html for interpreter/bookings 
+<h1>See all Interpreter and User Bookings</h1>
+
+<% @jobs.each do |job| %>
+<p><%= job.name %></p>
+<% end %>
+
+<%= link_to "Create Another Booking", new_job_path %>
