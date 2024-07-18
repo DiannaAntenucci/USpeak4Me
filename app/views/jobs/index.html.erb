@@ -1,0 +1,10 @@
+<h1>Hello from the job index page</h1>
+<% @jobs.each do |job| %>
+  <li> <%= job.job_category %></li>
+  <li> <%= job.date %></li>
+  <li><%= job.price %></li>
+  <li> <%= job.urgency %></li>
+  <li> <%= job.address %></li>
+  <li> <%= job.description %></li>
+
+<% end %>
