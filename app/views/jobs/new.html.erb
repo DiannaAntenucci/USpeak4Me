@@ -8,6 +8,7 @@
             <%= simple_form_for(@job) do |f| %>
             <%= f.input :job_category, prompt: "Select a category", collection: @category %>
             <%= f.input :description, placeholder: "Enter details of your interpretation request here!" %>
+            <%= f.input :date, placeholder: "Year/Month/Date" %>
             <%= f.input :address, placeholder: "Enter ward or exact address here!" %>
             <%= f.input :price, label: "How much is your quote?", placeholder: "Enter a figure in ¥!" %>
             <%= f.input :urgency, label: "How quickly do you need your request completed?", placeholder: "Enter a number between 1-5 ( 1=not urgent, 5=very urgent)"  %>

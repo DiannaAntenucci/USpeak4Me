@@ -15,18 +15,18 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    @user = current_user
-    @job.user_id = @user.id
-    if @job.save
-      redirect_to job_path(@job)
-    else
-      render :new, status: :unprocessable_entity
-    end
+    # @user = current_user
+    @job.user= current_user
+      if @job.save
+        redirect_to job_path(@job)
+      else
+        render :new, status: :unprocessable_entity
+      end
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:job_category, :address, :description, :price, :urgency)
+    params.require(:job).permit(:job_category, :address, :description, :date, :price, :urgency)
   end
 end
