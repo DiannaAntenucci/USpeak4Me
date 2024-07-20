@@ -1,0 +1,17 @@
+<div class="container p-3">
+
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+            <h2 class="card-title">Create a new interpretation request</h5>
+            <%= simple_form_for(@job) do |f| %>
+            <%= f.input :job_category, prompt: "Select a category", collection: @category %>
+            <%= f.input :description, placeholder: "Enter details of your interpretation request here!" %>
+            <%= f.input :price, label: "How much is your quote?", placeholder: "Enter a figure in ¥!" %>
+            <%= f.input :urgency, label: "How quickly do you need your request completed?", placeholder: "Enter a number between 1-5 ( 1=not urgent, 5=very urgent)"  %>
+            <%= f.button :submit, class: "btn btn-primary"%>
+            <% end %>
+
+        </div>
+    </div>
+
+</div>

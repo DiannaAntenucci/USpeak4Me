@@ -11,4 +11,8 @@ class JobsController < ApplicationController
             render :new, status: :unprocessable_entity
           end
       end
+
+    def show
+      @job = Job.find(params[:id])
+    end
 end
