@@ -1,6 +1,15 @@
-<h1>Details of the Job </h1>
+<h2>Details of the Job</h2>
 
-<h1> Category: <%= @job.job_category%></h1>
-<h1> Price: <%= @job.price %> </h1>
-<h1> Urgency: <%= @job.urgency %> </h1>
-<h1> Address: <%= @job.address %> </h1>
+<div class="card-trip">
+  <img src="https://www.cityofpasadena.net/wp-content/uploads/Pasadena-City-Hall-Front-1.jpg" width="400" height="300"/>
+  <div class="card-trip-infos">
+    <div>
+      <p>Category: <%= @job.job_category%></p>
+      <p>Price: <%= @job.price %>Yen</p>
+      <p>Urgency: <%= @job.urgency %> (Min1 - Max5)</p>
+      <p>Address: <%= @job.address %> </p>
+    </div>
+<%= link_to "Return to Job List", jobs_path, class: "btn btn-outline-primary"%>
+<%= link_to "Check Assigned Interpreter", bookings_path, class: "btn btn-flat" %>
+  </div>
+</div>
