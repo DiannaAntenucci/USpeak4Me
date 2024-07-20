@@ -7,12 +7,26 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "Cleaning DB..."
 Job.destroy_all
 User.destroy_all
 
 categories = ["City Hall", "Hospital", "Dentist", "Shopping", "Friend"]
+addresses = ["Ikebukuro", "Meguro", "Asakusa", "Shibuya", "Shinjuku"]
+
+puts "Creating 20 jobs..."
 
 20.times do |i|
-  user = User.create!(email:"user-#{i+1}@example.com", password:"123456")
-  Job.create!(job_category: categories.sample, user: user, date: Time.now, price: 100, urgency: 1, address: "123 Main St", description: "Clean the house")
+  user = User.create!(email: "user-#{i + 1}@example.com", password: "123456")
+  Job.create!(
+    job_category: categories.sample,
+    user: user,
+    date: Faker::Date.between(from: Date.today, to: '2025-12-31'),
+    price: rand(100..99999),
+    urgency: rand(1..5),
+    address: addresses.sample,
+    description: Faker::Hobby.activity
+  )
 end
+
+puts "Created #{Job.count} restaurants!"
