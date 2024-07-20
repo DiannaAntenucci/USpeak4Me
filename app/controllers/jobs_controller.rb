@@ -15,8 +15,8 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    @user = current_user
-    @job.user_id = @user.id
+    # @user = current_user
+    @job.user = current_user
     if @job.save
       redirect_to job_path(@job)
     else
