@@ -10,6 +10,10 @@
 
 <div class="container p-3">
     <%# <h2>Meet our interpreters</h2> %>
-    <h2>Recent job requests</h2>
-    <h2>Reviews from our users</h2>
+    <h2 class="py-4">Recent job requests</h2>
+    <div class="cards"> 
+      <%= render partial: 'jobs/job', collection: @jobs, as: :job %> 
+</div>
+<br>
+    <h2 class="py-4">Reviews from our users</h2>
 </div>

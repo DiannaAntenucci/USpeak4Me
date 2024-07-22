@@ -1,48 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Index Page</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-</head>
+<div class="container p-3">
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="my-4">Job Board</h1>
+        <h3>View all open jobs</h3>
 
-<body>
-  <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h1 class="my-4">All jobs</h1>
-                <!-- Search Bar -->
-                <form class="form-inline mb-4" action="/search" method="get">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search jobs" aria-label="Search" name="query">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="row">
-            <% @jobs.each do |job| %>
-            <div class="col-md-3" >
-                <div class="card mb-3 mr-3" style="width: 18rem;">
-                    <img class="card-img-top" src="<%= asset_path('banner.jpg') %>" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-title"><%= job.job_category %></p>
-                        <p class="card-text">
-                            <b><%= "#{job.address} - 🔥#{job.urgency} - ¥#{job.price}" %></b>
-                        </p>
-                        <%= link_to "Check it out!", job_path(job), class: "btn btn-primary"%>
-
-                    </div>
+        <form novalidate="novalidate" class="simple_form search mb-5" action="/" accept-charset="UTF-8" method="get">
+            <div class="input-group">
+                <input class="form-control" type="text" name="search[query]" id="search_query" placeholder="Search jobs">
+                <div class="input-group-append">
+                    <button class="btn btn-flat" type="submit">      <i class="fas fa-search"></i> Search
+                    </button>
                 </div>
             </div>
-            <% end %>
-        </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+    <div class="cards">
+        <%= render partial: 'job', collection: @jobs, as: :job %> 
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>

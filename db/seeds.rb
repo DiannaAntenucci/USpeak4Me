@@ -7,12 +7,23 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'faker'
+
 Job.destroy_all
 User.destroy_all
 
-categories = ["City Hall", "Hospital", "Dentist", "Shopping", "Friend"]
+puts "Destroying all jobs..."
+puts "Destroying all users..."
+
+categories = ['City Hall', 'Hospital','Dentist', 'Doctor Visit', 'Apartment Search', 'Document Translation', 'Other']
+
+description = ["Clean the house", "Help me with speaking to the doctor in English", "I need help with my apartment search", "My tooth hurts", "I need help at the city office for MyNumber!"]
 
 20.times do |i|
   user = User.create!(email:"user-#{i+1}@example.com", password:"123456")
-  Job.create!(job_category: categories.sample, user: user, date: Time.now, price: 100, urgency: 1, address: "123 Main St", description: "Clean the house")
+  Job.create!(job_category: categories.sample, user: user, date: Time.now, price: rand(100..100000), urgency: rand(1..5), address: Faker::Address.city, description: description.sample)
 end
+
+puts "Added jobs!"
+puts "Added users!"

@@ -1,0 +1,43 @@
+.urgency-low { 
+    background-color: green; 
+    font-size: 15px;
+    color:white;
+    border-radius: 6px;
+    padding: 5px;
+}
+.urgency-medium { 
+    background-color: blue; 
+    font-size: 15px;
+    color:white;
+    border-radius: 6px;
+    padding: 5px;
+}
+.urgency-high { 
+    background-color: orange; 
+    font-size: 15px;
+    color:white;
+    border-radius: 6px;
+    padding: 5px;
+}
+.urgency-very-high { 
+    background-color: red; 
+    font-size: 15px;
+    color:white;
+    border-radius: 6px;
+    padding: 5px;
+    font-weight: bold;
+}
+.urgency-urgent { 
+    background-color: purple; 
+    font-size: 15px;
+    color:white;
+    border-radius: 6px;
+    padding: 5px;
+}
+.urgency-default { 
+    background-color: black; 
+    font-size: 15px;
+    color:white;
+    border-radius: 6px;
+    padding: 5px;
+}

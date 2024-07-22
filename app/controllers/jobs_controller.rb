@@ -9,7 +9,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
-    @category = ['Hospital', 'City Hall', 'Dentist', 'General Doctor Visit', 'Apartment Search']
+    @category = ['City Hall', 'Hospital','Dentist', 'Doctor Visit', 'Apartment Search', 'Document Translation', 'Other']
     @urgency = 0
   end
 

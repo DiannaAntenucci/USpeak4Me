@@ -1,5 +1,3 @@
-<h1>Create a new interpretation request</h1>
-
 <div class="container p-3">
 
     <div class="card shadow-lg p-3 mb-5 bg-white rounded">
@@ -10,7 +8,7 @@
             <%= f.input :description, placeholder: "Enter details of your interpretation request here!" %>
             <%= f.input :address, placeholder: "Enter ward or exact address here!" %>
             <%= f.input :price, label: "How much is your quote?", placeholder: "Enter a figure in ¥!" %>
-            <%= f.input :urgency, label: "How quickly do you need your request completed?", placeholder: "Enter a number between 1-5 ( 1=not urgent, 5=very urgent)"  %>
+            <%= f.input :urgency, as: :select, collection: Job::URGENCY_LEVELS.map { |key, value| [value, key] }, label: "How quickly do you need your request completed?", include_blank: "Select urgency level" %>
             <%= f.button :submit, class: "btn btn-primary"%>
             <% end %>
 
