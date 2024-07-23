@@ -6,8 +6,8 @@
     <div class="card-trip-infos">
         <div>
             <h2><%= @job.job_category %></h2>
+            <p>Date: <%= @job.date%></p>
             <h3><i class="fa-solid fa-location-dot"></i> <%= @job.address %></h3>
-
             <p><%= @job.description %></p>
         </div>
         <h2 class="card-trip-pricing">¥<%= number_with_delimiter(@job.price) %></h2>

@@ -22,8 +22,11 @@ description = ["Clean the house", "Help me with speaking to the doctor in Englis
 
 20.times do |i|
   user = User.create!(email:"user-#{i+1}@example.com", password:"123456")
-  Job.create!(job_category: categories.sample, user: user, date: Time.now, price: rand(100..100000), urgency: rand(1..5), address: Faker::Address.city, description: description.sample)
+  Job.create!(job_category: categories.sample, user: user, date: Faker::Date.between(from: Date.today, to: '2025-12-31'), price: rand(100..100000), urgency: rand(1..5), address: Faker::Address.city, description: description.sample)
 end
 
 puts "Added jobs!"
 puts "Added users!"
+
+puts "Created #{Job.count} jobs!"
+
