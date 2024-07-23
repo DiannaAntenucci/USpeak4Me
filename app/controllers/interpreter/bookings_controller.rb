@@ -1,5 +1,7 @@
 class Interpreter::BookingsController < ApplicationController
     def index
-        @jobs = Job.all
+        raise
+        @bookings = Booking.all
+        #need to grab own bookings
     end
 end

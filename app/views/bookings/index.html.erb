@@ -1,0 +1,7 @@
+<h1>All Bookings</h1>
+
+<% @bookings.each do |booking| %>
+<p>User: <%= booking.user_id %> - Job: <%= booking.job_id %> - Status: <%= booking.status %> </p>
+<% end %>
+
+<%= link_to "Create Another Booking", new_job_path %>
