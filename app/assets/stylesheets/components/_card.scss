@@ -1,0 +1,51 @@
+.card-trip {
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  
+  .card-trip > img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .card-trip h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .card-trip h3 {
+    font-size: 15px;
+    font-weight: lighter;
+    margin: 0;
+  }
+  
+  .card-trip p {
+    font-size: 12px;
+    opacity: .7;
+    margin: 0;
+  }
+  
+  
+  .card-trip .card-trip-infos {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+  }
+  
+  .card-trip-infos .card-trip-user {
+    position: absolute;
+    right: 10px;
+    top: -12px;
+  }
+
+  .card-trip-infos .card-trip-button {
+    position: absolute;
+    bottom: 10px; // Adjust as needed to place the button at the desired distance from the bottom
+    left: 50%; // Center the button horizontally
+    transform: translateX(-50%); // Adjust for the left property to truly center the button
+  }

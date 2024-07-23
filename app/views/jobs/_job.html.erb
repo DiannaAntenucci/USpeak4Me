@@ -1,0 +1,19 @@
+    <div class="card-trip">
+    <%= image_tag(image_for_category(job.job_category), alt: job.job_category) %>
+    <div class="card-trip-infos">
+        <div>
+            <h2><%= job.job_category %></h2>
+            <h3><i class="fa-solid fa-location-dot"></i> <%= job.address %></h3>
+
+            <p><%= job.description %></p>
+        </div>
+        <h2 class="card-trip-pricing">¥<%= number_with_delimiter(job.price) %></h2>
+        <div class="card-trip-user <%= urgency_class(job.urgency) %>">
+        <%= job.urgency_description %>
+        </div>
+
+    </div>
+            <div class="px-3 pb-3">
+                <%= link_to "<i class='fa-solid fa-circle-info'></i> See details".html_safe, job_path(job), class: "btn btn-primary card-trip-button" %>
+            </div>        
+    </div>

@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag("logo.png") %>
     <% end %>
 
@@ -10,7 +10,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <%# if user_signed_in? %>
+        <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
@@ -19,6 +19,9 @@
           </li>
           <li class="nav-item">
             <%= link_to "Bookings", bookings_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+          <%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {method: :delete} %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -30,12 +33,14 @@
               <%# link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
-        <%# else %>
-          <!--li class="nav-item"-->
-            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
-        <%# end %>
-      </ul>
+          
+        <% else %>
+        <li class="nav-item active">
+          <li class="nav-item">
+            <% link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        </ul>
     </div>
   </div>
 </div>
