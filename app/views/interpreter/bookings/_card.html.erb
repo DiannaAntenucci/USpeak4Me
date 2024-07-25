@@ -1,0 +1,14 @@
+<div class="card-trip">
+  <%= image_tag(image_for_category(booking.job.job_category), alt: booking.job.job_category) %>
+  <div class="card-trip-infos">
+    <div>
+      <h2> <%= booking.job.job_category %> </h2>
+      <p> <%= booking.job.description %></p>
+       <div class="card-trip-user <%= urgency_class(booking.job.urgency) %>">
+        <%= booking.job.urgency_description %>
+      </div>
+    </div>
+    <h2 class="card-trip-pricing">¥<%= number_with_delimiter(booking.job.price) %></h2>
+  </div> 
+</div>
+

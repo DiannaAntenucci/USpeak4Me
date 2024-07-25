@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :update]
   namespace :interpreter do
-    resources :bookings, only: :index
+    resources :bookings, only: [:index]
     # equivalent to => get 'translator/bookings', to: 'translator/bookings#index'
   end
   # Defines the root path route ("/")

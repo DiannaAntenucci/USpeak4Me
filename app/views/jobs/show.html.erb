@@ -21,13 +21,14 @@
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">
         <i class="fa-solid fa-book"></i> Book this job
     </button>
+    <%= link_to "<i class='fa-solid fa-book'></i> Book this job".html_safe, bookings_path, class: "btn btn-success " %></div>
     <%= simple_form_for [@job, @booking], html: { id: 'bookingForm', remote: true } do |f| %>
         <div class="text-center submit-form"><%= f.button :submit, style: 'display: none;' %></div>
     <% end %>
 </div> 
 
-</div>        
-</div>
+            </div>        
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
