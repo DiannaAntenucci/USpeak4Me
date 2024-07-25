@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @job = Job.find(params[:id])
   end
 
