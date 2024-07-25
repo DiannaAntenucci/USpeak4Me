@@ -11,22 +11,21 @@ class BookingsController < ApplicationController
     def create
         @job = Job.find(params[:job_id])
         @booking = Booking.new()
-        @booking.user_id = current_user
+        @booking.user = current_user
         @booking.job = @job
-        @booking.status = "accepted"
-        @booking.create(booking_params)
-        raise
+        @booking.status = "pending"
         
         if @booking.save
-            redirect_to job_path(@booking.job_id)
+            redirect_to job_path(@job)
         else
             render :new, status: :unprocessable_entity
+            raise
         end
     end
 
     private
 
-    def booking_params
-        params.require(:booking).permit(:status, :job_id)
-    end
+    # def booking_params
+    #     params.require(:booking).permit(:job_id)
+    # end
 end

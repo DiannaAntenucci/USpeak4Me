@@ -7,7 +7,7 @@
         <div>
             <h2><%= @job.job_category %></h2>
             <p>Date: <%= @job.date%></p>
-            <h3><i class="fa-solid fa-location-dot"></i> <%= @job.address %></h3>
+        <h3><i class="fa-solid fa-location-dot"></i> <%= @job.address %></h3>
             <p><%= @job.description %></p>
         </div>
         <h2 class="card-trip-pricing">¥<%= number_with_delimiter(@job.price) %></h2>
@@ -16,9 +16,91 @@
         </div>
 
     </div>
-            <div class="px-3 pb-3">
-<%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
-<%= link_to "<i class='fa-solid fa-book'></i> Book this job".html_safe, bookings_path, class: "btn btn-success" %></div>
+<div class="px-3 pb-3">
+    <%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">
+        <i class="fa-solid fa-book"></i> Book this job
+    </button>
+    <%= simple_form_for [@job, @booking], html: { id: 'bookingForm', remote: true } do |f| %>
+        <div class="text-center submit-form"><%= f.button :submit, style: 'display: none;' %></div>
+    <% end %>
+</div> 
 
-            </div>        
+</div>        
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="submitModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this booking?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="confirmSubmit">Confirm</button>
+            </div>
+        </div>
     </div>
+</div>
+
+<!-- Placeholder for the alert -->
+<div id="alertPlaceholder"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var confirmButton = document.getElementById('confirmSubmit');
+    if (confirmButton) {
+        confirmButton.addEventListener('click', function() {
+            // Submit the form via AJAX
+            var bookingForm = document.getElementById('bookingForm');
+            if (bookingForm) {
+                var formData = new FormData(bookingForm);
+                fetch(bookingForm.action, {
+                    method: bookingForm.method,
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Create and display the alert
+                        var alertPlaceholder = document.getElementById('alertPlaceholder');
+                        var alertDiv = document.createElement('div');
+                        alertDiv.className = 'alert alert-success alert-dismissible fade show';
+                        alertDiv.role = 'alert';
+                        alertDiv.innerHTML = `
+                            Booking was successful!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        `;
+                        alertPlaceholder.appendChild(alertDiv);
+
+                        // Close the modal
+                        var modal = bootstrap.Modal.getInstance(document.getElementById('submitModal'));
+                        if (modal) {
+                            modal.hide();
+                        }
+
+                        // Automatically dismiss the alert after 5 seconds
+                        setTimeout(function() {
+                            var alert = bootstrap.Alert.getInstance(alertDiv);
+                            if (alert) {
+                                alert.close();
+                            }
+                        }, 5000); // 5000 milliseconds = 5 seconds
+                    } else {
+                        // Handle error
+                        console.error('Form submission failed');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    }
+});
+</script>
