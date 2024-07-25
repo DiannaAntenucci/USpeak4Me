@@ -1,6 +1,11 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all
+    if params[:query].present?
+      @jobs = Job.search_by_job_category_and_address_and_description(params[:query])
+      flash[:notice] = "There are no results for the search" if @jobs.empty?
+    else
+      @jobs = Job.all
+    end
   end
 
   def show
