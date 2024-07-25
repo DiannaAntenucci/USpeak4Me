@@ -1,7 +1,9 @@
 class Interpreter::BookingsController < ApplicationController
     def index
-        raise
-        @bookings = Booking.all
-        #need to grab own bookings
+        #@bookings = current_user.bookings_as_interpreter
+        @bookings = Booking.where(user: current_user)
     end
 end
+
+
+
