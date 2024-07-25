@@ -1,7 +1,8 @@
-<h1>All Bookings</h1>
+<h1>My Applications</h1>
 
-<% @jobs.each do |job| %>
-<p><%= job.job_category %></p>
+<% @bookings.each do |booking| %>
+<p> User: <%= booking.user_id %></p>
+<p> Job: <%= booking.job_id %></p>
 <% end %>
 
-<%= link_to "Create Another Booking", new_job_path %>
+<%= link_to "Create Another Application", new_job_path %>
