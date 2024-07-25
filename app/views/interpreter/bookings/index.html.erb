@@ -3,6 +3,12 @@
 <% @bookings.each do |booking| %>
 <p> User: <%= booking.user_id %></p>
 <p> Job: <%= booking.job_id %></p>
+<p> Status: <%= booking.status %></p>
+<% if booking.status == 'pending' %>
+<%= button_to 'Accept', interpreter_booking_path(booking, booking: { status: 'accepted'}), method: :put %>
+<%= button_to 'Reject', interpreter_booking_path(booking, booking: { status: 'rejected'}), method: :put %>
+<% end %>
+
 <% end %>
 
 <%= link_to "Create Another Application", new_job_path %>
