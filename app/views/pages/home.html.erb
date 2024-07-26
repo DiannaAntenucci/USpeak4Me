@@ -1,19 +1,35 @@
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_url('banner.jpg')%>);">
-  <div class="container">
-    <h1>Welcome to <strong>USpeak4Me</strong>!</h1>
-    <p>You connect, we speak.</p>
-    <%= link_to "Post a job request", new_job_path, class: "btn btn-ghost" %>
-    <%= link_to "Book an interpreter", jobs_path, class: "btn btn-ghost" %>
-  </div>
+<%# Hero Banner %>
+<section class="section banner banner-section">
+  <div class="container banner-column">
+    <div class="banner-image">
+<%= image_tag 'interpreter-translator.jpg', alt: 'Hero Image' %>
 </div>
+      <div class="banner-inner">
+        <h1 class="heading-xl">Welcome to <strong>USpeak4Me</strong>!</h1>
+        <p>
+          Need help with translating documents from Japanese to English? Would you like an interpreter to help you at your local City Hall? No worries, we got you!
+        </p>
+        <%# <button class="btn btn-darken btn-inline">
+            Get Started<i class="bx bx-right-arrow-alt"></i>
+        </button> %>
+            <%= link_to "Post a job request", new_job_path, class: "btn btn-darken btn-inline" %>
+<%= link_to "See our job board", jobs_path, class: "btn btn btn-darken btn-inline" %>
+
+      </div>
+  </div>
+</section>
+
+
 
 <div class="container p-3">
     <%# <h2>Meet our interpreters</h2> %>
-    <h2 class="py-4">Recent job requests</h2>
+    
+    <div class="container bg-white p-4">
+      <h2 class="pb-4">Recently posted jobs</h2>
     <div class="cards"> 
       <%= render partial: 'jobs/job', collection: @jobs, as: :job %> 
 </div>
+</div>
 <br>
-    <h2 class="py-4">Reviews from our users</h2>
+    <%# <h2 class="py-4">Reviews from our users</h2> %>
 </div>

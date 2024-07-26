@@ -4,7 +4,12 @@
         <div>
             <h2><%= job.job_category %></h2>
             <h3><i class="fa-solid fa-location-dot"></i> <%= job.address %></h3>
-
+            <hr class="hr hr-blurry" />
+            <h2>Time requested</h2>
+            <%# Displays the date in the following format: 26 July 2024 @ 12:00PM %>
+            <h3><i class="fa-solid fa-calendar-days"></i> <%= job.date.strftime("%d %B %Y") %> </h3> 
+            <h3><i class="fa-solid fa-clock"></i> <span class="ml-3"><%= job.date.strftime("%I:%M%p") %></span></h3>
+            <hr class="hr hr-blurry" />
             <p><%= job.description %></p>
         </div>
         <h2 class="card-trip-pricing">¥<%= number_with_delimiter(job.price) %></h2>

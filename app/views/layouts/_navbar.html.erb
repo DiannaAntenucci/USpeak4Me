@@ -18,6 +18,9 @@
             <%= link_to "Job Board", jobs_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
+            <%= link_to "Bookings", interpreter_bookings_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, data: {"turbo_method": :delete}, class: "btn btn-secondary ms-2 me-2" %>
           </li>
           <li class="nav-item dropdown">
