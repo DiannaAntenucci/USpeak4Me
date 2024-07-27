@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
             redirect_to job_path(@job)
         else
             render :new, status: :unprocessable_entity
-            raise
         end
     end
 
@@ -33,15 +32,12 @@ class BookingsController < ApplicationController
     # render # where was the booking update form?
       end
     end
-
-    private
-    def booking_params
-    # TODO: check your model, might be different than mine
-      params.require(:booking).permit(:status, :start_time, :end_time)
-    end
   
-    private
-
+private
+      def booking_params
+      # TODO: check your model, might be different than mine
+        params.require(:booking).permit(:status, :start_time, :end_time)
+      end
     # def booking_params
     #     params.require(:booking).permit(:job_id)
     # end
