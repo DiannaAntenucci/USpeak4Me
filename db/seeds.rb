@@ -16,16 +16,30 @@ User.destroy_all
 puts "Destroying all jobs..."
 puts "Destroying all users..."
 
-categories = ['City Hall', 'Hospital','Dentist', 'Doctor Visit', 'Apartment Search', 'Document Translation', 'Other']
+categories_descriptions = {
+  'City Hall' => "I need help at the city office for MyNumber!",
+  'Hospital' => "I hava a bad headache and I don't know why",
+  'Dentist' => "My tooth hurts",
+  'Apartment Search' => "I need to find a sexy flat",
+  'Document Translation' => "I need help with my essay translation",
+  'Other' => "I need someone to see Hanabi with me"
+}
 
-description = ["Clean the house", "Help me with speaking to the doctor in English", "I need help with my apartment search", "My tooth hurts", "I need help at the city office for MyNumber!"]
+address = ["Asakusa", "Shibuya", "Odaiba", "Shinjuku", "Ginza", "Meguro"]
 
 20.times do |i|
-  user = User.create!(email:"user-#{i+1}@example.com", password:"123456")
-  Job.create!(job_category: categories.sample, user: user, date: Faker::Date.between(from: Date.today, to: '2025-12-31'), price: rand(100..100000), urgency: rand(1..5), address: Faker::Address.city, description: description.sample)
+  user = User.create!(email: "user-#{i + 1}@example.com", password: "123456")
+  category, description = categories_descriptions.to_a.sample
+  Job.create!(
+    job_category: category,
+    user: user,
+    date: Faker::Date.between(from: Date.today, to: '2025-12-31'),
+    price: rand(10..100) * 500,
+    urgency: rand(1..5),
+    address: address.sample,
+    description: description
+  )
 end
 
-puts "Added jobs!"
-puts "Added users!"
-
+puts "Created #{User.count} users!"
 puts "Created #{Job.count} jobs!"
