@@ -1,11 +1,10 @@
-<h1>All Bookings</h1>
+<h1>My Job Requests</h1>
 
-<% @bookings.each do |booking| %>
-<p>User: <%= booking.user_id %> - Job: <%= booking.job_id %> - Status: <%= booking.status %> </p>
-<% if booking.status == 'pending' %>
-<%= button_to 'Accept', booking_path(booking, booking: { status: 'accepted'}), method: :put %>
-<%= button_to 'Reject', booking_path(booking, booking: { status: 'canceled'}), method: :put %>
-<% end %>
-<% end %>
+    <div class="cards pb-4">
+        <%= render partial: 'card', collection: @bookings, as: :booking %>
+    </div>
 
-<%= link_to "Create Another Booking", new_job_path %>
+ <%= link_to "Post Another Job", new_job_path, class: "btn btn-flat"%>
+
+
+
