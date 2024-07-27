@@ -1,0 +1,8 @@
+<div class="container p-3">
+    <h1>test</h1>
+    <%= turbo_frame_tag "new_booking" do %>
+  <%= form_with(model: [@job, @booking]) do |form| %>
+    <%= form.submit "Book this job", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+</div>
