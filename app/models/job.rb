@@ -1,6 +1,8 @@
 class Job < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  geocoded_by :address
+  
 
   # Search by job_category, address and description
   include PgSearch::Model
