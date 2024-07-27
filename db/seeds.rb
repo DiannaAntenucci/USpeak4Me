@@ -29,4 +29,3 @@ puts "Added jobs!"
 puts "Added users!"
 
 puts "Created #{Job.count} jobs!"
-

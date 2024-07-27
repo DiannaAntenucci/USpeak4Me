@@ -2,6 +2,10 @@
 
 <% @bookings.each do |booking| %>
 <p>User: <%= booking.user_id %> - Job: <%= booking.job_id %> - Status: <%= booking.status %> </p>
+<% if booking.status == 'pending' %>
+<%= button_to 'Accept', booking_path(booking, booking: { status: 'accepted'}), method: :put %>
+<%= button_to 'Reject', booking_path(booking, booking: { status: 'rejected'}), method: :put %>
+<% end %>
 <% end %>
 
 <%= link_to "Create Another Booking", new_job_path %>
