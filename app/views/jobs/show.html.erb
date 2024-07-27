@@ -1,70 +1,46 @@
 <div class="container p-3">
-<h1 class="py-3">Job Details</h1>
-
-    <div class="card-trip">
+  <h1 class="py-3">Job Details</h1>
+  <div class="card-trip">
     <%= image_tag(image_for_category(@job.job_category), alt: @job.job_category) %>
     <div class="card-trip-infos">
-        <div>
-            <h2><%= @job.job_category %></h2>
+      <div>
+        <h2><%= @job.job_category %></h2>
         <h3><i class="fa-solid fa-location-dot"></i> <%= @job.address %></h3>
         <hr class="hr hr-blurry" />
-            <h2>Time requested</h2>
-            <%# Displays the date in the following format: 26 July 2024 @ 12:00PM %>
-            <h3><i class="fa-solid fa-calendar-days"></i> <%= @job.date.strftime("%d %B %Y") %> </h3>
-            <h3><i class="fa-solid fa-clock"></i> <span class="ml-3"><%= @job.date.strftime("%I:%M%p") %></span></h3>
-            <hr class="hr hr-blurry" />
-            <p><%= @job.description %></p>
-        </div>
-        <h2 class="card-trip-pricing">¥<%= number_with_delimiter(@job.price) %></h2>
-        <div class="card-trip-user <%= urgency_class(@job.urgency) %>">
+        <h2>Time requested</h2>
+        <h3><i class="fa-solid fa-calendar-days"></i> <%= @job.date.strftime("%d %B %Y") %> </h3>
+        <h3><i class="fa-solid fa-clock"></i> <span class="ml-3"><%= @job.date.strftime("%I:%M%p") %></span></h3>
+        <hr class="hr hr-blurry" />
+        <p><%= @job.description %></p>
+      </div>
+      <h2 class="card-trip-pricing">¥<%= number_with_delimiter(@job.price) %></h2>
+      <div class="card-trip-user <%= urgency_class(@job.urgency) %>">
         <%= @job.urgency_description %>
-        </div>
-
+      </div>
     </div>
-<div class="px-3 pb-3 d-flex justify-content-between">
-    <%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
-
-        <%= simple_form_for [@job, @booking], html: { id: 'bookingForm', local: false, remote: true } do |f| %>
-    <%# Used button_tag instead of f.button to display custom html in the button value. f.button does not allow custom html tags in value %>
-
-    <%= button_tag(type: 'submit', class: 'btn btn-success confirmSubmit') do %>
-      <i class='fa-solid fa-book'></i> Book this job
-    <% end %>
-
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">
-        <i class="fa-solid fa-book"></i> Book this job
-    </button>
-
-    <%= link_to "<i class='fa-solid fa-book'></i> Book this job".html_safe, bookings_path, class: "btn btn-success " %></div>
-    <%= simple_form_for [@job, @booking], html: { id: 'bookingForm', remote: true } do |f| %>
-        <div class="text-center submit-form"><%= f.button :submit, style: 'display: none;' %></div>
-    <% end %>
-</div> 
+    <div class="px-3 pb-3 d-flex justify-content-between">
+      <%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">
+        <i class="fa-solid fa-book"></i> Apply
+      </button>
+    </div>
+  </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="submitModalLabel">Confirm Submission</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to submit this booking?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="confirmSubmit">Confirm</button>
-            </div>
-        </div>
-            <div class="px-3 pb-3">
-<%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
-<%= link_to "<i class='fa-solid fa-book'></i> Book this job".html_safe, bookings_path, class: "btn btn-success " %></div>
-            </div>        
-
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="submitModalLabel">Confirm Submission</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to submit this booking?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= link_to 'Confirm', interpreter_bookings_path, class: 'btn btn-primary' %>
+      </div>
     </div>
-    <% end %>
-    </div>
-
-</div> 
+  </div>
+</div>
