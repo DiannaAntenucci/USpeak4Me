@@ -6,8 +6,8 @@
 <p> Job: <%= booking.job_id %></p>
 <p> Status: <%= booking.status %></p>
 <% if booking.status == 'pending' %>
-<%= button_to 'Accept', interpreter_booking_path(booking, booking: { status: 'accepted'}), method: :put %>
-<%= button_to 'Reject', interpreter_booking_path(booking, booking: { status: 'rejected'}), method: :put %>
+<%= button_to 'Accept', interpreter_bookings_path(booking, booking: { status: 'accepted'}), method: :put %>
+<%= button_to 'Reject', interpreter_bookings_path(booking, booking: { status: 'canceled'}), method: :put %>
 <% end %>
 
 <% end %>
