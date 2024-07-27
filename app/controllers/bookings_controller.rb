@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
         @job = Job.find(params[:job_id])
     end
 
+  
     def create
         @job = Job.find(params[:job_id])
         @booking = Booking.new()
@@ -34,6 +35,7 @@ class BookingsController < ApplicationController
         # 
         
         if @booking.save
+
             respond_to do |format|
                 format.html { redirect_to bookings_path, notice: 'Booking was successfully created.' }
                 format.json { render json: { redirect_url: interpreter_bookings_path(@interpreter, @booking) }, status: :created }
@@ -62,5 +64,10 @@ class BookingsController < ApplicationController
     def booking_params
     # TODO: check your model, might be different than mine
     params.require(:booking).permit(:status, :start_time, :end_time)
+    end
+            redirect_to job_path(@job)
+        else
+            render :new, status: :unprocessable_entity
+        end
     end
 end

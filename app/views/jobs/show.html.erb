@@ -23,12 +23,46 @@
     </div>
 <div class="px-3 pb-3 d-flex justify-content-between">
     <%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
+
         <%= simple_form_for [@job, @booking], html: { id: 'bookingForm', local: false, remote: true } do |f| %>
     <%# Used button_tag instead of f.button to display custom html in the button value. f.button does not allow custom html tags in value %>
 
     <%= button_tag(type: 'submit', class: 'btn btn-success confirmSubmit') do %>
       <i class='fa-solid fa-book'></i> Book this job
     <% end %>
+
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">
+        <i class="fa-solid fa-book"></i> Book this job
+    </button>
+
+    <%= link_to "<i class='fa-solid fa-book'></i> Book this job".html_safe, bookings_path, class: "btn btn-success " %></div>
+    <%= simple_form_for [@job, @booking], html: { id: 'bookingForm', remote: true } do |f| %>
+        <div class="text-center submit-form"><%= f.button :submit, style: 'display: none;' %></div>
+    <% end %>
+</div> 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="submitModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this booking?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="confirmSubmit">Confirm</button>
+            </div>
+        </div>
+            <div class="px-3 pb-3">
+<%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
+<%= link_to "<i class='fa-solid fa-book'></i> Book this job".html_safe, bookings_path, class: "btn btn-success " %></div>
+            </div>        
+
     </div>
     <% end %>
     </div>
