@@ -5,6 +5,12 @@ class JobsController < ApplicationController
       flash[:notice] = "There are no results for the search" if @jobs.empty?
     else
       @jobs = Job.all
+      # @markers = @jobs.geocoded.map do |job|
+      #   {
+      #     lat: job.latitude,
+      #     lng: job.longitude
+      #   }
+      # end    
     end
   end
 
