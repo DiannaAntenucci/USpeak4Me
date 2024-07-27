@@ -19,10 +19,12 @@
       </div>
     </div>
     <div class="px-3 pb-3 d-flex justify-content-between">
-      <%= link_to "<i class='fa-solid fa-arrow-left-long'></i> Job Board".html_safe, jobs_path, class: "btn btn-primary"%>
-      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">
-        <i class="fa-solid fa-book"></i> Apply
-      </button>
+      <%= simple_form_for [@job, @booking], html: { id: 'bookingForm', local: false, remote: true } do |f| %>
+        <%# Used button_tag instead of f.button to display custom html in the button value. f.button does not allow custom html tags in value %>
+        <%= button_tag(type: 'submit', class: 'btn btn-success confirmSubmit') do %>
+          <i class='fa-solid fa-book'></i> Apply
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -39,7 +41,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%= link_to 'Confirm', interpreter_bookings_path, class: 'btn btn-primary' %>
+        <button type="button" class="btn btn-primary" id="confirmSubmit">Confirm</button>
       </div>
     </div>
   </div>
