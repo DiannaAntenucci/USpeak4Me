@@ -1,6 +1,12 @@
 <div class="container p-3">
     <h1>My Interpretation Jobs</h1>
 
+    <div class="cards pb-4">
+        <%= render partial: 'card', collection: @bookings, as: :booking %>
+    </div>
+
+    <button class="btn btn-flat" type="submit" style="color: white> 
+
 <% @bookings.each do |booking| %>
 <p> User: <%= booking.user_id %></p>
 <p> Job: <%= booking.job_id %></p>
@@ -12,4 +18,4 @@
 
 <% end %>
 
-<%= link_to "Create Another Application", new_job_path %>
+<%= link_to "Apply for Another Interpretation Job", new_job_path %>
