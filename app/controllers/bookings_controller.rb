@@ -65,9 +65,4 @@ class BookingsController < ApplicationController
     # TODO: check your model, might be different than mine
     params.require(:booking).permit(:status, :start_time, :end_time)
     end
-            redirect_to job_path(@job)
-        else
-            render :new, status: :unprocessable_entity
-        end
-    end
 end

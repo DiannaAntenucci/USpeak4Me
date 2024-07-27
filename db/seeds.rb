@@ -9,7 +9,7 @@
 #   end
 
 require 'faker'
-
+Booking.destroy_all
 Job.destroy_all
 User.destroy_all
 

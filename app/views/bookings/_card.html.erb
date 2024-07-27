@@ -11,5 +11,12 @@
     </div>
     <h2 class="card-trip-pricing">¥<%= number_with_delimiter(booking.job.price) %></h2>
   </div> 
+
+     <div class="d-flex m-4 justify-content-between">
+     <% if booking.status == 'pending' %>
+    <%= button_to 'Accept', booking_path(booking, booking: { status: 'accepted'}), method: :put, class: "btn btn-success" %>
+    <%= button_to 'Reject', booking_path(booking, booking: { status: 'canceled'}), method: :put, class: "btn btn-danger" %>
+    <% end %>
+    </div>
 </div>
 
