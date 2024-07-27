@@ -1,11 +1,8 @@
 <div class="container p-3">
-    <h1>My Interpretation Jobs</h1>
-
-<% @bookings.each do |booking| %>
-<p> User: <%= booking.user_id %></p>
-<p> Job: <%= booking.job_id %></p>
-<p> Status: <%= booking.status %></p>
-
-<% end %>
-
-<%= link_to "Create Another Application", new_job_path %>
+  <h1>My Interpretation Jobs</h1>
+  <% @bookings.each do |booking| %>
+    <p> User: <%= booking.user_id %></p>
+    <p> Job: <%= booking.job_id %></p>
+    <p> Status: <%= booking.status %></p>
+  <% end %>
+  <%= link_to "Create Another Application", new_job_path %>

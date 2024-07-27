@@ -29,7 +29,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_130235) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "date"
     t.integer "price"
     t.integer "urgency"
     t.string "address"
