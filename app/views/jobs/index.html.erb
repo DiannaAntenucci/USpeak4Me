@@ -1,31 +1,29 @@
 <div class="container p-3">
 
-<!--Search form -->
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <%= form_with url: jobs_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
+  <div class="row">
     <div class="col-sm-12">
-        <h1 class="my-4">Job Board</h1>
-        <h3>View all open jobs</h3>
+        <h1 class="my-4"><i class="fa-solid fa-person-chalkboard"></i> Job Board</h1>
+          <div class="container bg-white p-4">
+            <h3>View all open jobs</h3>
+            <!--Search form -->
+            <div class="row">
+              <div class="col-sm-12 my-3 pb-3">
+                <%= form_with url: jobs_path, method: :get, class: "d-flex" do %>
+                  <%= text_field_tag :query,
+                        params[:query],
+                        class: "form-control",
+                        placeholder: "Type a keyword"
+                    %>
+                    <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+                      <i class='fa-solid fa-magnifying-glass'></i>Search
+                    <% end %>                
+              <% end %>
+              </div>              </div>
+              
+            <div class="cards">
+              <%= render partial: 'job', collection: @jobs, as: :job %>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-
-
-
-
-    <div class="cards">
-        <%= render partial: 'job', collection: @jobs, as: :job %>
-    </div>
-
-</div>
+  </div>

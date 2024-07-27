@@ -1,4 +1,7 @@
 .banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
     background-size: cover;
     background-position: center;
     padding: 150px 0;
@@ -6,16 +9,156 @@
   
   .banner h1 {
     margin: 0;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    font-size: 32px;
-    font-weight: bold;
+    color: black;
+    font-size: 48px;
+    font-weight: ƒbold;
   }
   
   .banner p {
     font-size: 20px;
-    color: white;
+    color: black;
     opacity: .7;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
+
   
+  html {
+    font-size: 100%;
+    box-sizing: inherit;
+    scroll-behavior: smooth;
+    height: -webkit-fill-available;
+  }
+
+  main {
+    overflow: hidden;
+  }
+  
+  p {
+    text-wrap: balance;
+  }
+  
+  a,
+  button {
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border: none;
+    outline: none;
+    background: none;
+  }
+  
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  
+  .section {
+    margin: 0 auto;
+    padding: 5rem 0 2rem;
+    background-color: white;
+  }
+  
+  .container {
+    max-width: 75rem;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  
+
+  .heading-xl {
+    font-family: inherit;
+    font-size: clamp(2.648rem, 6vw, 4.241rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+  .heading-lg {
+    font-family: inherit;
+    font-size: clamp(2.179rem, 5vw, 3.176rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+  .heading-md {
+    font-family: inherit;
+    font-size: clamp(1.794rem, 4vw, 2.379rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -1px;
+  }
+  
+  .btn {
+    transition: all 0.3s ease-in-out;
+  }
+  .btn-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -moz-column-gap: 0.5rem;
+         column-gap: 0.5rem;
+  }
+  .btn-darken {
+    padding: 0.75rem 2rem;
+    color: white;
+    background-color: black;
+    }
+  .darkmode .btn-darken {
+    background-color: var(--color-blue-500);
+  }
+
+  
+  .banner-column {
+    position: relative;
+    display: grid;
+    align-items: center;
+    row-gap: 2rem;
+  }
+  @media only screen and (min-width: 48rem) {
+    .banner-column {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: center;
+      margin-top: 4rem;
+    }
+  }
+  @media only screen and (min-width: 64rem) {
+    .banner-column {
+      grid-template-columns: 1fr -webkit-max-content;
+      grid-template-columns: 1fr max-content;
+      -moz-column-gap: 2rem;
+           column-gap: 2rem;
+    }
+  }
+  .banner-image {
+    display: block;
+    max-width: 25rem;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+    justify-self: center;
+  }
+  @media only screen and (min-width: 48rem) {
+    .banner-image {
+      order: 1;
+      max-width: 28rem;
+      height: auto;
+    }
+  }
+  @media only screen and (min-width: 64rem) {
+    .banner-image {
+      max-width: 33rem;
+      height: auto;
+    }
+  }
+  .banner-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1.5rem;
+  }
